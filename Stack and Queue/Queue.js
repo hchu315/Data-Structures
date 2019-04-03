@@ -23,7 +23,7 @@ class Queue {
     if (!this.front) {
       return null;
     }
-    
+  
     const temp = this.front;
     if (this.front === this.back) {
       this.back = null;

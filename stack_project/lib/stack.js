@@ -54,16 +54,13 @@ class Stack {
     if (!this.top) {
       return null;
     }
-    
     const temp = this.top;
-
     if (this.top === this.bottom) {
       this.top = null;
       this.bottom = null;
-    } else {
-      this.top = this.top.next;
-    }
+    } 
 
+    this.top = this.top.next;
     this.length--;
     return temp.value;
   }
