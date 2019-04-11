@@ -27,18 +27,32 @@ c.right = g;
        b   c
      d  e f  g
 
-// 3 (recursive) Algorithms to print out all the values of tree
+// 3 (recursive) Algorithms to print out all the values of Binary trees
 
 1. In-Order
-  function in-order(node) {
-    if (node) return;
+  function inOrder(root) {
+    if (!root) return;
 
-    return node.left;
-    return node.value;
-    return node.right;
+    return root.left;
+    return root.value;
+    return root.right;
   }
 
 
 2. Pre-Order
+  function preOrder(root) {
+    if (!root) return;
+
+    return root.value;
+    return root.left;
+    return root.right;
+  }
 
 3. Post-Order
+  function postOrder(root) {
+    if (!root) return;
+
+    return root.left;
+    return root.right;
+    return root.value;
+  }
