@@ -17,7 +17,7 @@ function depthFirst(root) {
 
 }
 
-// recursion DFS - utilizes the call stack
+// RECURSION DFS - utilizes the call stack
 
 function depthRecursion(root) {
   if (!root) return;
@@ -34,7 +34,7 @@ function breadthFirst(root) {
   const queue = [root];
 
   while (root.length) {
-    let node =  queue.shift();
+    let node =  queue.shift(); //consider visited once shifted off so log the value next line
 
     console.log(node.value);
     if (node.left) queue.push(node.left);
@@ -42,25 +42,5 @@ function breadthFirst(root) {
   }
 }
 
-
-// DFS re-type
-
-function depthFirst(root) {
-  // use stack
-  const stack = [ root ];
-  
-  while (stack.length) {
-    let top = stack.pop();
-    console.log(top.value);
-    
-    if (top.right) stack.push(top.right)
-    if (top.left) stack.push(top.left)
-  }
-}
-
-function depthFirstRecursion(root) {
-  if (!root) return;
-  console.log(root.value)
-  depthFirstRecursion(root.left);
-  depthFirstRecursion(root.right);
-}
+/* NOTE: will almost never see a recursive BFS due to the fact that recursion utilizes a call stack while BFS is the
+opposite and uses a queue */
