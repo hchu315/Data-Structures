@@ -41,41 +41,39 @@
 // -----------
 function linkedListIntersection(list1, list2) {
   // TODO: Implement the hasCycle function!
-  if (!list1.head || !list2.head) return null;
+  // if (!list1.head || !list2.head) return null;
+  const list1Length = getListLength(list1.head);
+  const list2Length = getListLength(list2.head);
 
-  let index = Math.abs(list1.length - list2.length)
+  let index = Math.abs(list1Length - list2Length)
   const longList = list1.length > list2.length ? list1 : list2;
   const shortList = list1.length > list2.length ? list2 : list1;
-  // let longListNode = longList.get(index);
   let longListNode = longList.head;
   let shortListNode = shortList.head;
-  // console.log(longListNode)
 
-  while (longListNode) {
-    if (shortListNode === longListNode) return shortListNode.value;
-    console.log(`short List: ${shortListNode.value}`)
-    console.log(`long List: ${longListNode.value}`)
-    shortListNode = shortListNode.next;
+  while (longListNode && shortListNode) {
+    if (index > 0) {
+      longListNode = longListNode.next;
+      index--;
+      continue;
+    }
+    
+    if (longListNode === shortListNode) return longListNode; 
+    // console.log(`short List: ${shortListNode.value}`)
+    // console.log(`long List: ${longListNode.value}`)
+    // shortListNode = shortListNode.next;
     longListNode = longListNode.next;
+    shortListNode = shortListNode.next;
   }
-  // const shortList =  list1.length > list2.length ? list2 : list1;
-  // const longList = list1 === shortList ? list2 : list1;
-  // const visitedObj = {};
-
-  // let currentNode = shortList.head;
-  // while (currentNode) {
-  //   visitedObj.currentNode = true;
-  //   currentNode = currentNode.next;
-  // }
-
-  // let otherNode = longList.head;
-  // while (otherNode) {
-  //   if (visitedObj.otherNode === true) return otherNode.value;
-  //   otherNode = otherNode.next
-  // }
-
-
   return null
+}
+
+function getListLength(node) {
+  if (node.next === null) {
+    return 1;
+  } else {
+    return getListLength(node.next) + 1;
+  }
 }
 
 // ----------------------------------------
