@@ -62,6 +62,19 @@
 function hasCycle(linkedList) {
   // TODO: Implement the hasCycle function!
 
+
+  let firstNode = linkedList.head;
+  let secondNode = linkedList.head.next;
+
+  while (firstNode && secondNode) {
+    if (firstNode === secondNode) return true;
+
+    if (!secondNode.next) return false;
+    firstNode = firstNode.next;
+    secondNode = secondNode.next.next;
+  }
+
+  return false;
 }
 
 
