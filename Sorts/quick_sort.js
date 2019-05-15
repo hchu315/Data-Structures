@@ -27,9 +27,13 @@ function quick_sort(arr) {
 // considered an efficient sorting algo at O(n log n)
 
 // SPACE COMPLEXITY
-// O(n log n), there are n partition arrays that takes up space since the base case is a single element or empty array. the recursive
-// call stack from quicksort is log n, leading to n log n space complexity
-// O(log n), AVG case scenario where a non-min/max value is chosen as pivot and this is generally the case since the worst case
-// scenario is incredibly rare
+// O(n), there are n partition arrays that takes up space since the base case is a single element or empty array. the recursive
+// call stack from quicksort is log n. However, n is faster growing term than log n, so it simplifies from n + log n => n
 
 // Other Notes
+// There is a O(log n) space complexity quicksort by using an in-place partition. Since log n isnt a huge improvement over n
+// space complexity, the above algo is easier to remember and use
+// Quicksort should be used when you need to use an efficient sorting algo quickly, due to less code and ease of recalling.
+// When constant space is needed, use the in-place version, which trades off with implementation simplicity
+// When you can have knowledge of the data to optimize the pivot choice. If the data is mostly sorted, you could always
+// randomiz the pivot choice to prevent from choosing the first element(which may be the min value)
