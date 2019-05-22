@@ -33,17 +33,30 @@ class Trie {
   }
 
   search(word, root = this.root) {
-    if (!word && root.isTerminal) {
-      return true; 
-    } else {
-      return false;
-    }
-    
     let letter = word[0];
-    if (!(letter in root.children[letter])) {
-      return false
-    } else {
-      return this.search(word.slice(1), root.children[letter])
+
+    if (!(letter in root.children)) return false;
+
+    if (word.length === 1) {
+      if (root.children[letter].isTerminal) {
+        return true;
+      } else {
+        return false;
+      }
     }
+
+    return this.search(word.slice(1), root.children[letter])
   }
 }
+
+// TIME COMPLEXITY
+// Worst-case TC is O(m) where m is the length of the word. TC is not dependent on how many words stored in the trie because at most
+// you are traversing from the root to a terminal node which is a path the same length of the word.
+
+// SPACE COMPLEXITY
+// Worst-case SC is O(m*n) where m is the length of a word and n is the number of words; it occurs when the words have no overlapping
+// prefixes at all and you're essentially creating a new path for every word.
+
+// OTHER NOTES
+// Tries are best used for a dictionary purpose of storing words and need to efficiently look up a word. Compared to a hash-based data
+// structure like Object or Set, where the worst-case TC is O(n) where n is the number of entries in the dictionary due to hash collisions
